@@ -13,10 +13,14 @@ Including another URLconf
     1. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import include, url
+from django.conf.urls.static import static
 from django.contrib import admin
 from test_mptt.views import unordered_list
+import settings
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^unordered_list',unordered_list),
-]
+    url(r'^tinymce/', include('tinymce.urls')),
+    url(r'ckeditor/', include('ckeditor_uploader.urls'))
+]#+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
